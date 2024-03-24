@@ -91,16 +91,27 @@ public class KeyValueArray<K extends Comparable<K>, V> implements Dictionary<K,V
 
    @Override
    public void compress() throws OutOfMemoryError {
+      // Check if the array is empty
+      if (count == 0) {
+         return;
+      }
+
       // First partition the null's to the end of the array.
       int indexOfFirstNull = Algorithms.partitionByRule(pairs, count, element -> element == null);
+
+      // Ensure indexOfFirstNull is within the range [0, count - 1]
+      indexOfFirstNull = Math.min(indexOfFirstNull, count - 1);
+
       // Then reallocate using the index from partitioning, pointing the first null in the array.
-      reallocate(indexOfFirstNull);
+      if (indexOfFirstNull >= 0) {
+         reallocate(indexOfFirstNull + 1); // Add 1 to include the first null element itself.
+      }
    }
 
-   @java.lang.SuppressWarnings("unchecked")
+   @SuppressWarnings("unchecked")
    private void reallocate(int newSize) throws OutOfMemoryError {
       reallocationCount++;
-      Pair<K, V> [] newPairs = (Pair<K,V>[])new Pair[newSize];
+      Pair<K, V>[] newPairs = (Pair<K,V>[]) new Pair[newSize];
       for (int index = 0; index < count; index++) {
          newPairs[index] = pairs[index];
       }

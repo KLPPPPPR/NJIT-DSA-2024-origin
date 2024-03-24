@@ -1,0 +1,20 @@
+** Analysing toSortedArray() speed **
+testfile,bytes,elements,time (ms)
+Binary search tree:
+village.txt,4561,100,5
+small-town.txt,44892,1000,8
+town.txt,451617,10000,35
+large-town.txt,2255053,50000,150
+city.txt,4511688,100000,229
+large-city.txt,22554540,500000,1338
+metropolis.txt,45107513,1000000,2303
+capital.txt,90209834,2000000,6307
+Hashtable:
+village.txt,4561,100,1
+small-town.txt,44892,1000,2
+town.txt,451617,10000,34
+large-town.txt,2255053,50000,181
+city.txt,4511688,100000,366
+large-city.txt,22554540,500000,1727
+metropolis.txt,45107513,1000000,3548
+capital.txt,90209834,2000000,7232

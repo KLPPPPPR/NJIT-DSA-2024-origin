@@ -7,7 +7,7 @@ package oy.tol.tra;
  * Keys must implement the Comparable interface. Equality is determined by
  * comparing keys.
  */
-public class Pair<K extends Comparable<K>, V> implements Comparable<Pair<K, V>> {
+public class Pair<K extends Comparable<? super K>, V> implements Comparable<Pair<K, V>> {
    private K key;
    private V value;
 
@@ -34,7 +34,15 @@ public class Pair<K extends Comparable<K>, V> implements Comparable<Pair<K, V>> 
 
    @Override
    public int compareTo(Pair<K, V> o) {
-      return key.compareTo(o.key);
+      if (key == null && o.key == null) {
+         return 0;
+      } else if (key == null) {
+         return -1;
+      } else if (o.key == null) {
+         return 1;
+      } else {
+         return key.compareTo(o.key);
+      }
    }
 
    @Override
@@ -58,5 +66,4 @@ public class Pair<K extends Comparable<K>, V> implements Comparable<Pair<K, V>> 
       }
       return true;
    }
-
 }

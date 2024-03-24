@@ -1,4 +1,5 @@
 package oy.tol.tra;
+import java.util.Arrays;
 
 /**
  * A dictionary is a data structure containing key-value -pairs.
@@ -31,15 +32,15 @@ public interface Dictionary<K extends Comparable<K>, V> {
    /**
     * Decide on which type to implement, either hash table or binary search tree.
     * Then return the value.
-    * 
+    *
     * @return The type of the phonebook implementation.
     */
    Type getType();
 
    /**
     * Ensures the (possible) internal array implementation has room for at least for {@code size}
-    * number of elements. Otherwise, the internal array must be reallocated, grown. 
-    * 
+    * number of elements. Otherwise, the internal array must be reallocated, grown.
+    *
     * Calling this method removed all elements from the Dictionary internal array. Do not call
     * this method to reallocate and keep existing elements. Use a private method you implement for that.
     * This method is only used when you have created an empty Dictionary and then you need to ensure

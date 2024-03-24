@@ -8,8 +8,9 @@ class TreeToArrayVisitor<K extends Comparable<K>, V> implements Visitor<K, V> {
    @java.lang.SuppressWarnings({"unchecked"})
    public TreeToArrayVisitor(int count) {
       elements = (Pair<K,V>[])new Pair[count];
-      count = 0;
+      this.count = 0; // 正确初始化计数器
    }
+
 
    @Override
    public void visit(TreeNode<K, V> node) {
