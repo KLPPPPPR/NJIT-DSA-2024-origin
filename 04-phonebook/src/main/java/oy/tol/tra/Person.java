@@ -5,8 +5,8 @@ public class Person implements Comparable<Person> {
     private String lastName;
 
     public Person(final Person person) {
-        this.firstName = person.firstName;
-        this.lastName = person.lastName;
+        this.firstName = new String(person.firstName);
+        this.lastName = new String(person.lastName);
     }
 
     public Person(String firstName, String lastName) {
@@ -32,44 +32,43 @@ public class Person implements Comparable<Person> {
     }
 
     /**
-     * Calculates the hash value of the person based on their first and last names.
+     * TODO: Implement the method below to return a hash value. It must be calculated from the
+     * first and last name of the person.
      *
      * @return Hash value of the person.
      */
     @Override
     public int hashCode() {
-        int hash = 17;
-        hash = (hash * 31) + firstName.hashCode();
-        hash = (hash * 31) + lastName.hashCode();
+        int hash = 5381;
+        // Implement hash function here.
+        hash=hash*31+firstName.hashCode();
+        hash=hash*31+lastName.hashCode();
         return Math.abs(hash);
     }
 
-
     @Override
     public boolean equals(Object other) {
-        if (this == other) {
-            return true;
+        if (other instanceof Person) {
+            return this.getFullName().equals(((Person)other).getFullName());
         }
-        if (other == null || getClass() != other.getClass()) {
-            return false;
-        }
-        Person person = (Person) other;
-        return firstName.equals(person.firstName) && lastName.equals(person.lastName);
+        return false;
     }
 
     /**
-     * Compares two persons based on their last names and then first names.
-     *
-     * @param other The other person to compare to.
-     * @return Returns a negative integer, zero, or a positive integer as this person
-     *         is less than, equal to, or greater than the specified person.
+     * Compares two persons, this and the other one.
+     * <p>
+     * In a phonebook, persons are identified by the last and first names.
+     * So if a person is the same or another, depends on if they have
+     * the same name. You can use String.compareTo in implementing this.
+     * <p>
+     * Return <0 if the person's full name (as string) is smaller than the other's.
+     * Return 0 if the full name is identical.
+     * Return >0 if the other persons full name is larger (as string).
+     * Note: String class also implements <code>compareTo()</code> you can use here.
+     * @returns Returns 0 if persons are the same otherwise depending on the full name, <0 or >0.
      */
     @Override
     public int compareTo(Person other) {
-        int lastNameComparison = lastName.compareTo(other.lastName);
-        if (lastNameComparison != 0) {
-            return lastNameComparison;
-        }
-        return firstName.compareTo(other.firstName);
+        return getFullName().compareTo(other.getFullName());
     }
 }
