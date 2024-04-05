@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/06-dailytasks/04-2-queue (1).iml" filepath="$PROJECT_DIR$/06-dailytasks/04-2-queue (1).iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/NJIT-DSA-2024-origin.iml" filepath="$PROJECT_DIR$/.idea/NJIT-DSA-2024-origin.iml" />
     </modules>
   </component>
