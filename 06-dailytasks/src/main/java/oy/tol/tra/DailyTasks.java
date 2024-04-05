@@ -47,20 +47,16 @@ public class DailyTasks {
             }
          }
       };
-      // Schedule the task to run every 5 seconds (for demonstration purposes)
       timer.schedule(task, 0, 5000);
    }
 
    public static void main(String[] args) {
-      // Instantiate DailyTasks
       DailyTasks dailyTasks = new DailyTasks();
 
-      // Add some tasks
       dailyTasks.addTask("Task 1");
       dailyTasks.addTask("Task 2");
       dailyTasks.addTask("Task 3");
 
-      // Start the timer
       dailyTasks.startTimer();
    }
 }
